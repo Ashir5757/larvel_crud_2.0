@@ -38,44 +38,44 @@ return redirect('/');
             return view('updatestd',['eid'=>$id,'editname'=>$editname, 'editemail'=>$editemail]);
         }else{
             $std = student::find($id);
-            $std->delete();
+            $std-> delete();
         }
        return redirect('/');
     }
 
-    // function Edit(Request $request){
-    //     $ID = $request->get('id');
-    //     $Name = $request->get("updatename");
-    //     $Email = $request->get("updateemail");
-    //     $Image = $request->get("updateimage");
-    //     $stu =  student::find($ID);
-    //     $stu -> name = $Name;
-    //     $stu -> email = $Email;
-    //     $stu -> image = $Image;
-    //     $stu -> save();
-    //     return redirect('/');
-    // }
-
-
-    function Edit(Request $request) {
-
+    function Edit(Request $request){
         $ID = $request->get('id');
         $Name = $request->get("updatename");
         $Email = $request->get("updateemail");
         $Image = $request->get("updateimage");
-
-        $stu = student::find($ID);
-
-        if ($stu !== null) {
-            $stu->name = $Name;
-            $stu->email = $Email;
-            $stu->image = $Image;
-            $stu->save();
-            return redirect('/');
-        } else {
-            // handle error when student record with specified ID is not found
-            return redirect()->back()->with('error', 'Student record not found.');
-        }
+        $stu =  student::find($ID);
+        $stu -> name = $Name;
+        $stu -> email = $Email;
+        $stu -> image = $Image;
+        $stu -> save();
+        return redirect('/');
     }
+
+
+    // function Edit(Request $request) {
+
+    //     $ID = $request->get('id');
+    //     $Name = $request->get("updatename");
+    //     $Email = $request->get("updateemail");
+    //     $Image = $request->get("updateimage");
+
+    //     $stu = student::find($ID);
+
+    //     if ($stu !== null) {
+    //         $stu->name = $Name;
+    //         $stu->email = $Email;
+    //         $stu->image = $Image;
+    //         $stu->save();
+    //         return redirect('/');
+    //     } else {
+    //         // handle error when student record with specified ID is not found
+    //         return redirect()->back()->with('error', 'Student record not found.');
+    //     }
+    // }
 
 }
